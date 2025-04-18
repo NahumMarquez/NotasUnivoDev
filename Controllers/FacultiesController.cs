@@ -25,11 +25,11 @@ namespace NotasUnivoDev.Controllers
             FacultiesModel model = new();
             if (id > 0)
             {
-                model = DbContext.Faculties.FirstOrDefault(x => x.FacultyId == id)?? new();
+                model = DbContext.Faculties.FirstOrDefault(x => x.FacultyId == id) ?? new();
             }
             return View(model);
         }
-        
+
 
         [HttpPost]
         public IActionResult UpSert(FacultiesModel model)
@@ -64,5 +64,12 @@ namespace NotasUnivoDev.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult View(int id)
+        {
+            FacultiesModel model = DbContext.Faculties.FirstOrDefault(x => x.FacultyId == id) ?? new();
+            model.Careers = DbContext.Careers.Where(x => x.FacultyId == id).ToList();
+            return View(model);
+        }
     }
 }

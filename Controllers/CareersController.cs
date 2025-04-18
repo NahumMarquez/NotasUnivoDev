@@ -37,7 +37,6 @@ namespace NotasUnivoDev.Controllers
                 model.IsActive = career.IsActive;
 
             }
-
             model.FacultiesList = DbContext.Faculties.ToList();
 
             return View(model); 
@@ -72,11 +71,8 @@ namespace NotasUnivoDev.Controllers
                     DbContext.Careers.Update(careersModel);
                     DbContext.SaveChanges();
                     return RedirectToAction("Index");
-
                }
-
             }
-
             model.FacultiesList = DbContext.Faculties.ToList();
             return View(model);
         }
@@ -84,11 +80,27 @@ namespace NotasUnivoDev.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            CareersModel careers = DbContext.Careers.FirstOrDefault(row => row.FacultyId == id) ?? new();
-            careers.IsActive = !careers.IsActive;
+            CareersModel career = DbContext.Careers.FirstOrDefault(row => row.FacultyId == id) ?? new();
+            career.IsActive = !career.IsActive;
             DbContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult View(int id)
+        {
+            CareersModel career = DbContext.Careers.FirstOrDefault(row => row.CareerId == id) ?? new();
+            if (career is null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                career.Faculty = DbContext.Faculties.FirstOrDefault(x => career.FacultyId == x.FacultyId);
+                return View(career);
+            }
+        }
+
     }
 }
 
