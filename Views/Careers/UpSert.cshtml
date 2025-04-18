@@ -1,0 +1,43 @@
+﻿@using NotasUnivoDev.Models.ViewModels
+@model CareersViewModel;
+
+
+<form asp-action="UpSert" asp-controller="Careers" method="POST">
+    <div asp-validation-summary="All">
+        <i class=" bg-info bi-exclamation-triangle-fill"></i>
+    </div>
+
+    <input type="hidden" asp-for="CareerId" value="@Model.CareerId" placeholder="CareerId" arial-label="CareerId">
+    <div asp-validation-summary="All">
+        <i class=" bg-info bi-exclamation-triangle-fill"></i>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <input type="text" class="form-control" asp-for="CareerName" placeholder="Career Name" aria-label="Career Name">
+
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <select class="form-control form-select" asp-for="FacultyId">
+            @foreach (FacultiesModel Faculty in Model.FacultiesList)
+            {
+                <option value="@Faculty.FacultyId">@Faculty.FacultyName</option>
+            }
+        </select>
+
+    </div>
+    <div class="input-group mb-3">
+        <div class="form-check form-switch">
+            <input class="form-check-input" asp-for="IsActive" type="checkbox" id="IsActive" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Is Active</label>
+        </div>
+    </div>
+
+    <button class=" btn btn-success" type="submit"><span class=" fas fa-save"></span>Guardar informacion</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
