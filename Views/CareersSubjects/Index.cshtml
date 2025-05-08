@@ -1,0 +1,68 @@
+﻿@model List<CareersSubjetcsModel>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 d-flex justify-content-start">
+            <a type="button" class="btn btn-primary" asp-action="UpSert" asp-controller="CareersSubjects"><span class=" fas fa-plus"></span>Agregar</a>
+        </div>
+        <div class="col-xl-12 col-md-12 col-sm-12 mt-3">
+            <table class="table table-hover" id="CareersSubjectsTable">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Id</th>
+                        <th>Subject Name</th>
+                        <th>Career Name</th>
+                        <th>VU</th>
+                        <th>Is Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (CareersSubjetcsModel item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <a type="button" class="btn btn-success" asp-action="View" asp-controller="CareersSubjects" asp-route-id="@item.CareersSubjetcId">
+                                        <span class="fas fa-eye"></span>
+                                    </a>
+                                    <a type="button" class="btn btn-warning" asp-action="UpSert" asp-controller="CareersSubjects" asp-route-id="@item.CareersSubjetcId">
+                                        <span class="fas fa-pencil"></span>
+                                    </a>
+                                    <a type="button" class="btn btn-danger" asp-action="Delete" asp-controller="CareersSubjects" asp-route-id="@item.CareersSubjetcId">
+                                        <span class="fas fa-trash"></span>
+                                    </a>
+                                </td>
+
+                                <td>@item.CareersSubjetcId</td>
+                                <td>@item.Subject.SubjectName</td>
+                                <td>@item.Subject.VU</td>
+                                <td>@item.Career.CareerName</td>
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge bg-success">Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Inactivo</span>
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function (){
+            $('#CareersSubjectsTable').DataTable();
+        });
+    </script>
+}
