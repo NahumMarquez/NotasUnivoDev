@@ -11,5 +11,6 @@ namespace NotasUnivoDev.Db
 
         public DbSet<FacultiesModel> Faculties { get; set; }
         public DbSet<CareersModel> Careers { get; set; }
+        public DbSet<SubjectsModel> Subjects { get; set; }
     }
 }

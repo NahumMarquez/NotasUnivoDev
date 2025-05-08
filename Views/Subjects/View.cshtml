@@ -1,0 +1,21 @@
+﻿@model SubjectsModel
+<div class="col-xl-12 col-md-12 col-sm-12 mt-3">
+    <table class="table table-hover" id="CareersTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject Name</th>
+                <th>VU</th>
+                <th>Is Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.SubjectId</td>
+                <td>@Model.SubjectName</td>
+                <td>@Model.VU</td>
+                <td>@Model.IsActive</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
