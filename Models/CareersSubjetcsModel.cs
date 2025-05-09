@@ -17,5 +17,12 @@ namespace NotasUnivoDev.Models
         public virtual CareersModel Career { get; set; }
         public virtual SubjectsModel Subject { get; set; }
 
+        public CareersSubjetcsModel()
+        {
+            Created = DateTime.Now;
+            CreatedBy = "ADMIN";
+            IsActive = true;
+        }
+
     }
 }

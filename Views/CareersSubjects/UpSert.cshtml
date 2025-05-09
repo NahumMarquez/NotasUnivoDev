@@ -1,0 +1,53 @@
+﻿@using NotasUnivoDev.Models.ViewModels
+@model CareersSubjectsViewModel;
+
+
+<form asp-action="UpSert" asp-controller="CareersSubjects" method="POST">
+    <div asp-validation-summary="All">
+        <i class=" bg-info bi-exclamation-triangle-fill"></i>
+    </div>
+
+    <input type="hidden" asp-for="CareerSubjectId" value="@Model.CareerSubjectId" placeholder="CareerSubjectId" arial-label="CareerSubjectId">
+    <div asp-validation-summary="All">
+        <i class=" bg-info bi-exclamation-triangle-fill"></i>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <input type="number" class="form-control" asp-for="Cycle" placeholder="Cycle" aria-label="Cycle">
+
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-List"></span></span>
+        <select class="form-control form-select" asp-for="CareerId">
+            @foreach (CareersModel career in Model.CareersList)
+            {
+                <option value="@career.CareerId">@career.CareerName</option>
+            }
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-book"></span></span>
+        <select class="form-control form-select" asp-for="SubjectId">
+            @foreach (SubjectsModel subject in Model.SubjectsList)
+            {
+                <option value="@subject.SubjectId">@subject.SubjectName</option>
+            }
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="form-check form-switch">
+            <input class="form-check-input" asp-for="IsActive" type="checkbox" id="IsActive" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Is Active</label>
+        </div>
+    </div>
+
+    <button class=" btn btn-success" type="submit"><span class=" fas fa-save"></span>Guardar informacion</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
