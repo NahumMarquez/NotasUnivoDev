@@ -17,6 +17,7 @@ namespace NotasUnivoDev.Controllers
         public IActionResult Index()
         {
             //Eager loading
+            ViewData["Title"] = "Subjects";
             List<SubjectsModel> List = DbContext.Subjects.ToList();
             return View(List);
         }

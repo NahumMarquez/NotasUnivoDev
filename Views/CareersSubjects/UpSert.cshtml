@@ -1,6 +1,13 @@
 ﻿@using NotasUnivoDev.Models.ViewModels
 @model CareersSubjectsViewModel;
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/CareersSubjects/Index">Career Subjects</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@(Model.CareerSubjectId == 0 ? "New Record" : "Update record")</li>
+    </ol>
+</nav>
 
 <form asp-action="UpSert" asp-controller="CareersSubjects" method="POST">
     <div asp-validation-summary="All">

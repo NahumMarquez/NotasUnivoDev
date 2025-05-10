@@ -19,6 +19,7 @@ namespace NotasUnivoDev.Controllers
         public IActionResult Index()
         {
             //Eager loading
+            ViewData["Title"] = "Careers";
             List<CareersModel> List = DbContext.Careers.Include(x=> x.Faculty).ToList();
             return View(List);
         }

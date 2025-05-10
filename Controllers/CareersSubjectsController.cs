@@ -16,8 +16,9 @@ namespace NotasUnivoDev.Controllers
         }
         public IActionResult Index()
         {
+            ViewData["Title"] = "Careers Subjects";
+
             List<CareersSubjetcsModel> List = DbContext.CareersSubjects
-                
                 .Include(x => x.Subject)
                 .Include(x => x.Career)
                 .ToList();

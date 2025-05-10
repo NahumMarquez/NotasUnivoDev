@@ -1,6 +1,13 @@
 ﻿@using NotasUnivoDev.Models.ViewModels
 @model CareersViewModel;
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Careers/Index">Careers</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@(Model.CareerId == 0 ? "New Record" : "Update record")</li>
+    </ol>
+</nav>
 
 <form asp-action="UpSert" asp-controller="Careers" method="POST">
     <div asp-validation-summary="All">
@@ -26,10 +33,10 @@
                 <option value="@Faculty.FacultyId">@Faculty.FacultyName</option>
             }
         </select>
-
     </div>
+
     <div class="input-group mb-3">
-        <div class="form-check form-switch">
+        <div class="form-control form-switch">
             <input class="form-check-input" asp-for="IsActive" type="checkbox" id="IsActive" checked>
             <label class="form-check-label" for="flexSwitchCheckChecked">Is Active</label>
         </div>
@@ -37,6 +44,8 @@
 
     <button class=" btn btn-success" type="submit"><span class=" fas fa-save"></span>Guardar informacion</button>
 </form>
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

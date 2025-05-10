@@ -15,6 +15,7 @@ namespace NotasUnivoDev.Controllers
         }
         public IActionResult Index()
         {
+            ViewData["Title"] = "Faculties";
             List<FacultiesModel> List = DbContext.Faculties.ToList();
             return View(List);
         }

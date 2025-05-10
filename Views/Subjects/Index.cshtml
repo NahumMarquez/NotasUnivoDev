@@ -1,9 +1,15 @@
 ﻿@model List<SubjectsModel>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Subjects</li>
+    </ol>
+</nav>
 
 <div class="container">
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 d-flex justify-content-start">
-            <a type="button" class="btn btn-primary" asp-action="UpSert" asp-controller="Subjects"><span class=" fas fa-plus"></span>Agregar</a>
+            <a type="button" class="btn btn-primary" asp-action="UpSert" asp-controller="Subjects"><span class=" fas fa-plus"></span>Add</a>
         </div>
         <div class="col-xl-12 col-md-12 col-sm-12 mt-3">
             <table class="table table-hover" id="SubjectsTable">
@@ -40,11 +46,11 @@
                                 <td>
                                     @if (subject.IsActive)
                                     {
-                                        <span class="badge bg-success">Activo</span>
+                                        <span class="badge badge-success">Activo</span>
                                     }
                                     else
                                     {
-                                        <span class="badge bg-danger">Inactivo</span>
+                                        <span class="badge badge-danger">Inactivo</span>
                                     }
                                 </td>
 
