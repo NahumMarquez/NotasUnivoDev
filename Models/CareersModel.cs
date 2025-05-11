@@ -11,6 +11,7 @@ namespace NotasUnivoDev.Models
         [ForeignKey(nameof(FacultyId))]
         public int FacultyId { get; set; }
         public virtual FacultiesModel Faculty { get; set; }
+
         public CareersModel()
         {
             IsActive = true;

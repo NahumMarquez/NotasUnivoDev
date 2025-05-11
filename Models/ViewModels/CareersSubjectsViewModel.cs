@@ -9,6 +9,7 @@
         public bool IsActive { get; set; }
         public List<SubjectsModel> SubjectsList { get; set; }
         public List<CareersModel> CareersList { get; set; }
+
         public int CareerId { get; set; }
     }
 }

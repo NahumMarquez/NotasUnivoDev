@@ -9,7 +9,6 @@ namespace NotasUnivoDev.Models
         public int SubjectId { get; set; }
         public string SubjectName { get; set; }
         public int VU { get; set; }
-
         public SubjectsModel()
         {
             IsActive = true;

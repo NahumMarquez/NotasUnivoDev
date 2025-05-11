@@ -7,5 +7,6 @@
         public int FacultyId { get; set; }
         public bool IsActive { get; set; }
         public List<FacultiesModel> FacultiesList { get; set; }
+        public List<SubjectsModel> SubjectsList { get; set; }
     }
 }

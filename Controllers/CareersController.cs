@@ -52,6 +52,7 @@ namespace NotasUnivoDev.Controllers
             careersModel.CareerId = model.CareerId;
 
             ModelState.Remove("FacultiesList");
+            ModelState.Remove("SubjectsList");
 
 
             if(careersModel.CareerId == 0)
@@ -97,8 +98,18 @@ namespace NotasUnivoDev.Controllers
             }
             else
             {
-                career.Faculty = DbContext.Faculties.FirstOrDefault(x => career.FacultyId == x.FacultyId);
-                return View(career);
+                CareersViewModel vModel = new();
+                vModel.CareerId = career.CareerId;
+                vModel.CareerName = career.CareerName;
+                vModel.IsActive = career.IsActive;
+
+                vModel.FacultiesList = DbContext.Faculties.Where(x => career.FacultyId == x.FacultyId).ToList();
+                //Listados de materias de las cuales poseen CareerId en el registro
+                var listSubjectsId = DbContext.CareersSubjects.Where(x => x.CareerId == id).Select(x => x.SubjectId).Distinct().ToList();
+
+
+                vModel.SubjectsList = DbContext.Subjects.Where(x => listSubjectsId.Contains(x.SubjectId)).ToList();
+                return View(vModel); 
             }
         }
 

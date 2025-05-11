@@ -7,13 +7,13 @@ namespace NotasUnivoDev.Models
     {
         [Key]
         public int CareersSubjetcId { get; set; }
-        [ForeignKey(nameof(CareerId))]
+        //[ForeignKey(nameof(CareerId))] 
+
         public int CareerId { get; set; }
-        [ForeignKey(nameof(SubjectId))]
+
+       // [ForeignKey(nameof(SubjectId))]
         public int SubjectId { get; set; }
         public int Cycle { get; set; }
-
-
         public virtual CareersModel Career { get; set; }
         public virtual SubjectsModel Subject { get; set; }
 

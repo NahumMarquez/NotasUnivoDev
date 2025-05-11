@@ -35,6 +35,8 @@ namespace NotasUnivoDev.Controllers
         [HttpPost]
         public IActionResult UpSert(FacultiesModel model)
         {
+            ModelState.Remove("Careers");
+
             if (model.FacultyId == 0)
             {
                 if (ModelState.IsValid)
