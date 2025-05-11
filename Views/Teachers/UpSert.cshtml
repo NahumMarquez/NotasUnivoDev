@@ -1,0 +1,45 @@
+﻿@model TeachersModel;
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Teachers/Index">Teachers</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@(Model.TeacherId == 0 ? "New Record" : "Update record")</li>
+    </ol>
+</nav>
+
+<form asp-action="UpSert" asp-controller="Teachers" method="POST">
+    <div asp-validation-summary="All">
+        <i class=" bg-info bi-exclamation-triangle-fill"></i>
+    </div>
+
+    <input type="hidden" asp-for="TeacherId" value="@Model.TeacherId" placeholder="TeacherId" arial-label="TeacherId">
+
+    <div asp-validation-summary="All">
+        <i class=" bg-info bi-exclamation-triangle-fill"></i>
+    </div>
+
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Name" aria-label="Name">
+    </div>
+
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name" aria-label="LastName">
+    </div>
+
+
+    <div class="input-group mb-3">
+        <div class="form-check form-switch">
+            <input class="form-check-input" asp-for="IsActive" type="checkbox" id="IsActive" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Is Active</label>
+        </div>
+    </div>
+    <button class=" btn btn-success" type="submit"><span class=" fas fa-save"></span>Guardar informacion</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

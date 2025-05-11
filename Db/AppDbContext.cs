@@ -13,5 +13,6 @@ namespace NotasUnivoDev.Db
         public DbSet<CareersModel> Careers { get; set; }
         public DbSet<SubjectsModel> Subjects { get; set; }
         public DbSet<CareersSubjetcsModel> CareersSubjects { get; set; }
+        public DbSet<TeachersModel> Teachers { get; set; }
     }
 }
